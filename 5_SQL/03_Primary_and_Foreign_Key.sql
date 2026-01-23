@@ -1,21 +1,21 @@
 CREATE DATABASE IF NOT EXISTS instagram;
+
 USE instagram;
 
 -- USERS TABLE
 CREATE TABLE users (
-	id INT AUTO_INCREMENT,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     age INT,
 	username VARCHAR(25) NOT NULL,
     email VARCHAR(30) UNIQUE NOT NULL,
     followings INT DEFAULT 0 CHECK (followings >= 0),
     followers INT DEFAULT 0 CHECK (followers >= 0),
-	CONSTRAINT check_age CHECK (age >= 13),
-    PRIMARY KEY (id)
+	CONSTRAINT check_age CHECK (age >= 13)
 );
 
 -- POSTS TABLE
 CREATE TABLE posts (
-	post_id INT AUTO_INCREMENT PRIMARY KEY,
+	post_id INT PRIMARY KEY AUTO_INCREMENT,
     content VARCHAR(200) NOT NULL,
 
     -- Foreign key referencing users table
